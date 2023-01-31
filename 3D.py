@@ -3,7 +3,7 @@ import math
 a = tkinter.Tk()
 a.title = "test"
 
-cam_postion = [1,80,20]
+cam_postion = [150,80,20]
 point_postion =[
     #[x,y,z],[x,y]
     [[100,50,30],[0,0]],#a0
@@ -44,7 +44,7 @@ def change_dimension():
                 h = abs(cam_postion[2])/(abs(cam_postion[2])+abs(point_postion[i][0][2]))
                 long_postion = abs(abs(cam_postion[0])-abs(point_postion[i][0][0]))
                 # x = (long_postion*h)+point_postion[i][0][0]
-                if cam_postion[0] > point_postion[i][0][0]:
+                if cam_postion[0] > point_postion[i][0][0] or  cam_postion[0] == point_postion[i][0][0]:
                     x = point_postion[i][0][0] - (long_postion*h)
                 elif cam_postion[0] < point_postion[i][0][0]:
                     x = (long_postion*h)+point_postion[i][0][0]
@@ -56,6 +56,9 @@ def change_dimension():
                 # x = (long_postion*h)+point_postion[i][0][1]
                 if cam_postion[1] > point_postion[i][0][1]:
                     x = point_postion[i][0][1] - (long_postion*h)
+                elif cam_postion[1] == point_postion[i][0][1]:
+                    x = point_postion[i][0][1] - (long_postion*h)
+                    
                 elif cam_postion[1] < point_postion[i][0][1]:
                     x = (long_postion*h)+point_postion[i][0][1]
                 point_postion[i][1][1] = x
